@@ -1,0 +1,33 @@
+{
+  "name": "cp-code-challenge",
+  "version": "1.0.0",
+  "description": "C&P Code Challenge",
+  "main": "index.js",
+  "scripts": {
+    "cy:run": "cypress run --browser chrome --headless",
+    "cy:open": "cypress open --browser chrome",
+    "prepare": "husky install",
+    "eslint": "eslint .",
+    "format": "prettier --write \"**/*.+(js|json)\""
+  },
+  "lint-staged": {
+    "*.{js,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.7.0",
+    "cypress-mochawesome-reporter": "^3.3.0",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-chai-friendly": "^0.7.2",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-mocha": "^10.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "mocha": "^10.2.0",
+    "prettier": "2.8.4"
+  }
+}
