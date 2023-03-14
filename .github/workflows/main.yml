@@ -11,14 +11,18 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
-          build: npm run build
-          start: npm start
-          browser: chrome
-          headless: true
-          record: true
+            build: npx cypress info
+            browser: chrome
+            headless: true
+            record: true
         env:
-          TZ: Europe/Zurich
-          CYPRESS_standard_password: ${{ secrets.CYPRESS_STANDARD_PASSWORD }}
-          CYPRESS_locked_password: ${{ secrets.CYPRESS_LOCKED_PASSWORD }}
-          CYPRESS_problem_password: ${{ secrets.CYPRESS_PROBLEM_PASSWORD }}
-          CYPRESS_glitch_password: ${{ secrets.CYPRESS_GLITCH_PASSWORD }}
+            TZ: Europe/Zurich
+            CYPRESS_standard_password: ${{ secrets.CYPRESS_STANDARD_PASSWORD }}
+            CYPRESS_locked_password: ${{ secrets.CYPRESS_LOCKED_PASSWORD }}
+            CYPRESS_problem_password: ${{ secrets.CYPRESS_PROBLEM_PASSWORD }}
+            CYPRESS_glitch_password: ${{ secrets.CYPRESS_GLITCH_PASSWORD }}
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+            name: cypress-report
+            path: cypress/report
