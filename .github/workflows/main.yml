@@ -17,6 +17,7 @@ jobs:
             record: true
         env:
             TZ: Europe/Zurich
+            CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
             CYPRESS_standard_password: ${{ secrets.CYPRESS_STANDARD_PASSWORD }}
             CYPRESS_locked_password: ${{ secrets.CYPRESS_LOCKED_PASSWORD }}
             CYPRESS_problem_password: ${{ secrets.CYPRESS_PROBLEM_PASSWORD }}
