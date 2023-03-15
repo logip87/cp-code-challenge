@@ -30,4 +30,20 @@ describe("Login page tests", () => {
     cy.inputHasError(loginPageSelectors.inputs.username);
     cy.inputHasError(loginPageSelectors.inputs.password);
   });
+
+  it("Login without a password shows proper validation message", () => {
+    const user = USERS.standard;
+    enterLoginCredentials(user.username, "");
+    assertFailedLogin("noPassword");
+    cy.inputHasError(loginPageSelectors.inputs.username);
+    cy.inputHasError(loginPageSelectors.inputs.password);
+  });
+
+  it("Login without an username shows proper validation message", () => {
+    const user = USERS.standard;
+    enterLoginCredentials("", user.password);
+    assertFailedLogin("noUsername");
+    cy.inputHasError(loginPageSelectors.inputs.username);
+    cy.inputHasError(loginPageSelectors.inputs.password);
+  });
 });
