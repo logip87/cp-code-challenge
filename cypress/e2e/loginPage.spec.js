@@ -22,4 +22,12 @@ describe("Login page tests", () => {
     cy.inputHasError(loginPageSelectors.inputs.username);
     cy.inputHasError(loginPageSelectors.inputs.password);
   });
+
+  it("Login as not existing user shows proper validation message", () => {
+    const user = USERS.standard;
+    enterLoginCredentials(`${user.username}a`, user.password);
+    assertFailedLogin("wrongCredentials");
+    cy.inputHasError(loginPageSelectors.inputs.username);
+    cy.inputHasError(loginPageSelectors.inputs.password);
+  });
 });

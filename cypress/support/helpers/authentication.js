@@ -13,6 +13,8 @@ export function enterLoginCredentials(username, password) {
 export function assertFailedLogin(error) {
   const errorMessage = {
     lockedOut: "Epic sadface: Sorry, this user has been locked out.",
+    wrongCredentials:
+      "Epic sadface: Username and password do not match any user in this service",
   };
   cy.contains(errorMessage[error]).should("be.visible");
 }
