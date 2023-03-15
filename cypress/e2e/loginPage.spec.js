@@ -1,5 +1,9 @@
 import { USERS } from "../support/constants.js";
-import { enterLoginCredentials } from "../support/helpers/authentication";
+import {
+  enterLoginCredentials,
+  assertFailedLogin,
+} from "../support/helpers/authentication";
+import { loginPageSelectors } from "../support/selectors/loginPage";
 
 describe("Login page tests", () => {
   beforeEach(() => {
@@ -9,5 +13,13 @@ describe("Login page tests", () => {
   it("Login as standard user", () => {
     const user = USERS.standard;
     enterLoginCredentials(user.username, user.password);
+  });
+
+  it("Login as locked user shows proper validation message", () => {
+    const user = USERS.locked;
+    enterLoginCredentials(user.username, user.password);
+    assertFailedLogin("lockedOut");
+    cy.inputHasError(loginPageSelectors.inputs.username);
+    cy.inputHasError(loginPageSelectors.inputs.password);
   });
 });

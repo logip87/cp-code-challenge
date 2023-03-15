@@ -9,3 +9,10 @@ export function enterLoginCredentials(username, password) {
     .type(password);
   cy.get(loginPageSelectors.buttons.submit).should("be.visible").click();
 }
+
+export function assertFailedLogin(error) {
+  const errorMessage = {
+    lockedOut: "Epic sadface: Sorry, this user has been locked out.",
+  };
+  cy.contains(errorMessage[error]).should("be.visible");
+}
