@@ -16,3 +16,10 @@ export const USERS = {
     password: Cypress.env("glitch_password"),
   },
 };
+
+export const USER_MENU_ITEMS = {
+  allItems: "All Items",
+  about: "About",
+  logout: "Logout",
+  reset: "Reset App State",
+};

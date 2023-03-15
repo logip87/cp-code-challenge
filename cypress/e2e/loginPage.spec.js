@@ -11,13 +11,11 @@ describe("Login page tests", () => {
   });
 
   it("Login as standard user", () => {
-    const user = USERS.standard;
-    enterLoginCredentials(user.username, user.password);
+    cy.login("standard");
   });
 
   it("Login as locked user shows proper validation message", () => {
-    const user = USERS.locked;
-    enterLoginCredentials(user.username, user.password);
+    cy.login("locked");
     assertFailedLogin("lockedOut");
     cy.inputHasError(loginPageSelectors.inputs.username);
     cy.inputHasError(loginPageSelectors.inputs.password);
