@@ -18,7 +18,6 @@ jobs:
         with:
             build: npx cypress info
             browser: chrome
-            headless: true
             record: true
         env:
             TZ: Europe/Zurich
