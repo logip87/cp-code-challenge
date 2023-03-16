@@ -1,9 +1,9 @@
-import { USERS } from "../support/constants.js";
+import { USERS } from "../../support/constants.js";
 import {
   enterLoginCredentials,
   assertFailedLogin,
-} from "../support/helpers/authentication";
-import { loginPageSelectors } from "../support/selectors/loginPage";
+} from "../../support/helpers/authentication";
+import { loginPageSelectors } from "../../support/selectors/loginPage";
 
 describe("Login page tests", () => {
   beforeEach(() => {
