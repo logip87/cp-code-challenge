@@ -45,7 +45,7 @@ Runs tests in headless mode on Chrome browser.
 
 ## Reporting
 
-Report is generated automatically after the tests are over. Report can be found in `cypress/reports`.
+Report is generated automatically after the tests are over. Report can be found in `cypress/report`.
 
 ## GitHub Actions
 
