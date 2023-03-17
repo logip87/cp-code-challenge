@@ -2,6 +2,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   projectId: "s5tud5",
+  chromeWebSecurity: false,
   defaultCommandTimeout: 3000,
   viewportWidth: 1920,
   viewportHeight: 1080,
