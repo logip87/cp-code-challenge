@@ -57,24 +57,19 @@ describe("Main page tests", () => {
     cy.get(mainPageSelectors.shoppingCart.continueButton)
       .should("be.visible")
       .click();
-    assertCheckoutOverview(
+    assertShoppingCartItem(
       SHOP_MENU_ITEMS.tShirt,
       SHOP_MENU_ITEMS_DESCRIPTION.tShirt,
       quantity,
-      tShirtPrice,
-      shippingInfo,
-      tax,
-      total
+      tShirtPrice
     );
-    assertCheckoutOverview(
+    assertShoppingCartItem(
       SHOP_MENU_ITEMS.backpack,
       SHOP_MENU_ITEMS_DESCRIPTION.backpack,
       quantity,
-      backpackPrice,
-      shippingInfo,
-      tax,
-      total
+      backpackPrice
     );
+    assertCheckoutOverview(shippingInfo, tax, total);
     cy.get(mainPageSelectors.shoppingCart.finishButton)
       .should("be.visible")
       .click();

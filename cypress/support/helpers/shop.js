@@ -44,24 +44,7 @@ export function fillInformationFrom(firstName, lastName, zipCode) {
     .type(zipCode);
 }
 
-export function assertCheckoutOverview(
-  name,
-  description,
-  qty,
-  price,
-  shippingInfo,
-  tax,
-  priceTotal
-) {
-  cy.get(mainPageSelectors.shoppingCart.item)
-    .contains(name)
-    .should("be.visible")
-    .parents(mainPageSelectors.shoppingCart.item)
-    .within(() => {
-      cy.contains(description).should("be.visible");
-      cy.contains(qty).should("be.visible");
-      cy.contains(price).should("be.visible");
-    });
+export function assertCheckoutOverview(shippingInfo, tax, priceTotal) {
   cy.contains(shippingInfo).should("be.visible");
   cy.contains(tax).should("be.visible");
   cy.contains(priceTotal).should("be.visible");
