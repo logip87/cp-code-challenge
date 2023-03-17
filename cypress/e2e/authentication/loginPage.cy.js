@@ -15,7 +15,8 @@ describe("Login page tests", () => {
   });
 
   it("Login as locked user shows proper validation message", () => {
-    cy.login("locked");
+    const user = USERS.locked;
+    enterLoginCredentials(user.username, user.password);
     assertFailedLogin("lockedOut");
     cy.inputHasError(loginPageSelectors.inputs.username);
     cy.inputHasError(loginPageSelectors.inputs.password);
