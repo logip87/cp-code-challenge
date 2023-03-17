@@ -33,15 +33,21 @@ export function assertShoppingCartItem(name, description, qty, price) {
 }
 
 export function fillInformationFrom(firstName, lastName, zipCode) {
-  cy.get(mainPageSelectors.shoppingCart.inputs.firstName)
-    .should("be.visible")
-    .type(firstName);
-  cy.get(mainPageSelectors.shoppingCart.inputs.lastName)
-    .should("be.visible")
-    .type(lastName);
-  cy.get(mainPageSelectors.shoppingCart.inputs.zipCode)
-    .should("be.visible")
-    .type(zipCode);
+  if (firstName != "") {
+    cy.get(mainPageSelectors.shoppingCart.inputs.firstName)
+      .should("be.visible")
+      .type(firstName);
+  }
+  if (lastName != "") {
+    cy.get(mainPageSelectors.shoppingCart.inputs.lastName)
+      .should("be.visible")
+      .type(lastName);
+  }
+  if (zipCode != "") {
+    cy.get(mainPageSelectors.shoppingCart.inputs.zipCode)
+      .should("be.visible")
+      .type(zipCode);
+  }
 }
 
 export function assertCheckoutOverview(shippingInfo, tax, priceTotal) {
@@ -62,4 +68,13 @@ export function removeItemFromCart(name) {
 
 export function assertItemNotInCart(name) {
   cy.contains(mainPageSelectors.shoppingCart.item, name).should("not.exist");
+}
+
+export function assertFailedCheckout(error) {
+  const errorMessage = {
+    noFirstName: "First Name is required",
+    noLastName: "Last Name is required",
+    noPostalCode: "Postal Code is required",
+  };
+  cy.contains(errorMessage[error]).should("be.visible");
 }
